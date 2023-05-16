@@ -14,14 +14,14 @@ char *find_file_in_path(char *filename, char *filepath)
 {
 	char path[MAXCHAR];
 	char *envpath = getenv("PATH");
-	char *copy = strcpy(path, envpath);
+
+	char *__attribute__((unused))copy = strcpy(path, envpath);
 	char *tok = strtok(path, ":");
-	int i = 0;
-	int j = 0;
+	size_t  i = 0;
+	size_t j = 0;
 
 	if (access(filename, X_OK) != -1)
 	{
-		copy = NULL;
 		return (filename);
 	}
 

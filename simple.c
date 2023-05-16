@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	char *cmd = NULL, *token, *delim = " \n", *args[200];
+	char *cmd = NULL, *delim = " \n", *args[200];
 	int i = 0;
 	size_t n = 0;
 	pid_t pid;
