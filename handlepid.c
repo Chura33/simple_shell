@@ -7,28 +7,19 @@
 * @args: the array of the command and the arguments
 * Return: returns void
 */
-void handle_pid(pid_t pid, char *cmd, char *fullpath, char *args[])
+void do_pid(pid_t pid, char *cmd, char *fullpath, char *args[], char **env)
 {
 	if (pid < 0)
 	{
 		perror("fork");
 		exit(EXIT_FAILURE);
 	}
-	else if (pid == 0 && fullpath == NULL)
-	{
-		execve(args[0], args, NULL);
-		perror("execve");
-		free(cmd);
-		exit(0);
-	}
-
 	else if (pid == 0 && fullpath != NULL)
 	{
-		execve(fullpath, args, NULL);
+		execve(fullpath, args, env);
 		perror("execve");
 		free(cmd);
 		exit(0);
-
 	}
 	else
 		wait(NULL);

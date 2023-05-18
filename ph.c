@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include "phics.h"
 #define MAXCHAR 256
 
 /**
@@ -27,15 +24,15 @@ char *find_file_in_path(char *filename, char *filepath)
 
 	while (tok != NULL)
 	{
-		if (strlen(tok) + strlen(filename) + 2 <= MAXCHAR)
+		if (_strlen(tok) + _strlen(filename) + 2 <= MAXCHAR)
 		{
-			for (i = 0; i < strlen(tok); i++)
+			for (i = 0; i < _strlen(tok); i++)
 			{
 				filepath[i] = tok[i];
 			}
 				filepath[i] = '/';
 
-			for (j = 0; j < strlen(filename); j++)
+			for (j = 0; j < _strlen(filename); j++)
 			{
 				filepath[i + j + 1] = filename[j];
 			}

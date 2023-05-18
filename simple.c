@@ -2,19 +2,21 @@
 #define MAXCHAR 1024
 /**
 * main - main entry point
+* @argc: argument count
+* @argv: argument array
+* @envp : env variables array
 * Return: returns (0)
 */
 
-int main(void)
+int main(__attribute__((unused)) int argc, char **argv, char **envp)
 {
-	char *cmd = NULL, *delim = " \n", *args[200];
-	int i = 0;
+	char *cmd = NULL, *delim = " \n", *args[200], *fullpath, **env = envp;
+	int i = 0, cmdresult;
 	size_t n = 0;
 	pid_t pid;
 	ssize_t read = 0;
 	char filepath[MAXCHAR];
 	int interactive = isatty(fileno(stdin));
-	char *fullpath;
 
 	while (1)
 	{
@@ -24,6 +26,9 @@ int main(void)
 			fflush(stdout);
 		}
 		read = getline(&cmd, &n, stdin);
+		cmdresult = handle_cmd(cmd);
+		if (cmdresult == -1)
+			break;
 		if (read == -1)
 			break;
 		args[i] = strtok(cmd, delim);
@@ -35,8 +40,13 @@ int main(void)
 		args[i] = NULL;
 		i = 0;
 		fullpath = find_file_in_path(args[0], filepath);
+		if (fullpath == NULL)
+		{
+			perror(argv[0]);
+			continue;
+		}
 		pid = fork();
-		handle_pid(pid, cmd, fullpath, args);
+		do_pid(pid, cmd, fullpath, args, env);
 	}
 		free(cmd);
 		return (0);
