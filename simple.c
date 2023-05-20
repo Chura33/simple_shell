@@ -27,8 +27,13 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 		}
 		read = getline(&cmd, &n, stdin);
 		cmdresult = handle_cmd(cmd);
-		if (cmdresult == -1)
-			break;
+		if (cmdresult == 0)
+		{
+			for (i = 0; environ[i]; i++)
+ 	                     free(environ[i]);
+			continue;
+
+		}
 		if (read == -1)
 			break;
 		args[i] = strtok(cmd, delim);
