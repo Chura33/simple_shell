@@ -25,7 +25,7 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			write(1, "$ ", 2);
 			fflush(stdout);
 		}
-		read = getline(&cmd, &n, stdin);
+		read = _getline(&cmd, &n, stdin);
 		cmdresult = handle_cmd(cmd);
 		if (cmdresult == 0)
 		{
