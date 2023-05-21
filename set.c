@@ -38,4 +38,5 @@ int set (char *name, char *value)
                 free(newenv);
                 return (0);
         }
+	return (0);
 }
