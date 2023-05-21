@@ -7,7 +7,7 @@
 int handle_cmd(char *cmd)
 {
 	int i = 0, result = 0;
-	char *delim = " \n", *newArgs[256] = {NULL}, *cmdcpy = strdup(cmd);
+	char *delim = " \n", *newArgs[256] = {NULL}, *cmdcpy = _strdup(cmd);
 
 	newArgs[i] = strtok(cmdcpy, delim);
 
@@ -24,7 +24,7 @@ int handle_cmd(char *cmd)
 		exit(EXIT_SUCCESS);
 	}
 
-	else if (strncmp(cmdcpy, "setenv",strlen("setenv")) == 0)
+	else if (_strncmp(cmdcpy, "setenv",_strlen("setenv")) == 0)
 	{
 		result = set(newArgs[1], newArgs[2]);
 		free(cmdcpy);

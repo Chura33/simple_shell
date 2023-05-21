@@ -37,6 +37,8 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 		if (read == -1)
 			break;
 		args[i] = strtok(cmd, delim);
+		if (args[i] == NULL)
+			continue;
 		while (args[i] != NULL)
 		{
 			i++;

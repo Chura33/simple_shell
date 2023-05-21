@@ -6,7 +6,7 @@ int set (char *name, char *value)
         char *newvar;
         int count = 0;
 
-        if (getenv(name) == NULL)
+        if (_getenv(name) == NULL)
         {
                 for (count = 0; environ[count]; count++)
                         ;

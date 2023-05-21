@@ -10,7 +10,7 @@
 char *find_file_in_path(char *filename, char *filepath)
 {
 	char path[MAXCHAR];
-	char *envpath = getenv("PATH");
+	char *envpath = _getenv("PATH");
 
 	char *__attribute__((unused))copy = strcpy(path, envpath);
 	char *tok = strtok(path, ":");

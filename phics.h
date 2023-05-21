@@ -18,4 +18,7 @@ int _strcmp(char *s1, char *s2);
 char *_strcat(char *s1, char *s2);
 char *_strcpy(char *s1, char *s2);
 ssize_t _getline(char **ptr, size_t *n, FILE *stm);
+char *_getenv(const char *name);
+char *_strdup(char *str);
+
 #endif
