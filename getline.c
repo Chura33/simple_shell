@@ -2,23 +2,23 @@
 #define MAX_PATH 256
 /**
  * _getline - get the line command
- * @lineptr: null terminated char *
+ * @ptr: null terminated char *
  * @n: 0
- * @stream: source
+ * @stm: source
  *
  * Return: characters read or -1
  */
-ssize_t _getline(char **lineptr, __attribute__((unused)) size_t *n, FILE *stream)
+ssize_t _getline(char **ptr, __attribute__((unused)) size_t *n, FILE *stm)
 {
 	char buff[MAX_PATH] = "";
 	ssize_t read_count = 0;
-	*lineptr = malloc(sizeof(char) *MAX_PATH);
-	read_count = read(fileno(stream), buff, MAX_PATH);
+
+	read_count = read(fileno(stm), buff, MAX_PATH);
 	if (read_count == 0 || read_count == -1)
 	{
-		free(lineptr);
 		return (-1);
 	}
-	strcpy(*lineptr, buff);
+	*ptr = malloc(sizeof(char) * MAX_PATH);
+	_strcpy(*ptr, buff);
 	return (read_count);
 }
