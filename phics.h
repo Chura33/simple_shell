@@ -19,6 +19,7 @@ char *_strcat(char *s1, char *s2);
 char *_strcpy(char *s1, char *s2);
 ssize_t _getline(char **ptr, size_t *n, FILE *stm);
 char *_getenv(const char *name);
+int _setenv(const char *name, const char *value, int overwrite);
 char *_strdup(char *str);
 int cd_dir(char *name, char *argv);
 #endif

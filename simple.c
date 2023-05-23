@@ -25,6 +25,8 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			write(1, "$ ", 2);
 			fflush(stdout);
 		}
+		if(cmd != NULL)
+			free(cmd);
 		read = _getline(&cmd, &n, stdin);
 		if (read == -1)
 			break;
@@ -40,7 +42,9 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 		i = 0;
 		cmdresult = handle_cmd(args, argv[0], cmd);
 		if (cmdresult == 1)
+		{
 			continue;
+		}
 		fullpath = find_file_in_path(args[0], filepath);
 		if (fullpath == NULL)
 		{
@@ -50,6 +54,5 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 		pid = fork();
 		do_pid(pid, cmd, fullpath, args, env);
 	}
-		free(cmd);
 		return (0);
 }

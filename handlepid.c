@@ -22,5 +22,7 @@ void do_pid(pid_t pid, char *cmd, char *fullpath, char *args[], char **env)
 		exit(0);
 	}
 	else
+	{
 		wait(NULL);
+	}
 }

@@ -6,7 +6,7 @@
 */
 int handle_cmd(char **args, char *argv, char *cmd)
 {
-	int i = 0, result = 0, exit_status = 0;
+	int result = 0, exit_status = 0;
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
@@ -22,11 +22,17 @@ int handle_cmd(char **args, char *argv, char *cmd)
 
 	else if (_strcmp(args[0], "setenv") == 0)
 	{
-		result = set(args[1], args[2]);
-		free(cmd);
+		if (args[3] == NULL)
+		{
+			result = _setenv(args[1], args[2], 0);
+		}
+		else
+		{
+			result = _setenv(args[1], args[2], atoi(args[3]));
+		}
 		if (result == 0)
 		printf("success\n");
-		return (result);
+		return (1);
 	}
 	else if (_strcmp(args[0], "cd") == 0)
 	{
