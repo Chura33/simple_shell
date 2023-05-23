@@ -13,15 +13,15 @@ int cd_dir(char *name, char *argv)
 	if (name == NULL)
 	{
 		chdir(_getenv("HOME"));
-		setenv("OLDPWD", _getenv("PWD"), 1);
-		setenv("PWD", _getenv("HOME"), 1);
+		_setenv("OLDPWD", _getenv("PWD"), 1);
+		_setenv("PWD", _getenv("HOME"), 1);
 		return (0);
 	}
 	else if (_strcmp("-", name) == 0)
 	{
 		chdir(_getenv("OLDPWD"));
-		setenv("OLDPWD", _getenv("PWD"), 1);
-		setenv("PWD", getcwd(buff, 1024), 1);
+		_setenv("OLDPWD", _getenv("PWD"), 1);
+		_setenv("PWD", getcwd(buff, 1024), 1);
 		return (0);
 	}
 	else
@@ -32,8 +32,8 @@ int cd_dir(char *name, char *argv)
 			perror(argv);
 			return (0);
 		}
-		setenv("OLDPWD", _getenv("PWD"), 1);
-		setenv("PWD", getcwd(buff, 1024), 1);
+		_setenv("OLDPWD", _getenv("PWD"), 1);
+		_setenv("PWD", getcwd(buff, 1024), 1);
 		return (0);
 	}
 	return (0);
