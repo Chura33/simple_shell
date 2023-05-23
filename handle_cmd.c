@@ -4,42 +4,34 @@
 * @cmd: the command
 * Return: returns void
 */
-int handle_cmd(char *cmd)
+int handle_cmd(char **args, char *argv, char *cmd)
 {
 	int i = 0, result = 0, exit_status = 0;
-	char *delim = " \n", *newArgs[256] = {NULL}, *cmdcpy = _strdup(cmd);
 
-	newArgs[i] = strtok(cmdcpy, delim);
-
-	while (newArgs[i] != NULL)
+	if (_strcmp(args[0], "exit") == 0)
 	{
-		i++;
-		newArgs[i] = strtok(NULL, delim);
-	}
-	newArgs[i] = NULL;
-	if (_strcmp(newArgs[0], "exit") == 0)
-	{
-		if (newArgs[1] !=  NULL)
+		if (args[1] !=  NULL)
 		{
-			exit_status = atoi(newArgs[1]);
-			free(cmdcpy);
+			exit_status = atoi(args[1]);
 			free(cmd);
 			exit(exit_status);
 		}
-		free(cmdcpy);
 		free(cmd);
 		exit(exit_status);
 	}
 
-	else if (_strncmp(cmdcpy, "setenv",_strlen("setenv")) == 0)
+	else if (_strcmp(args[0], "setenv") == 0)
 	{
-		result = set(newArgs[1], newArgs[2]);
-		free(cmdcpy);
+		result = set(args[1], args[2]);
 		free(cmd);
 		if (result == 0)
 		printf("success\n");
 		return (result);
 	}
-	free(cmdcpy);	
-	return (1);
+	else if (_strcmp(args[0], "cd") == 0)
+	{
+		cd_dir(args[1], argv);
+		return (1);
+	}
+	return (0);
 }

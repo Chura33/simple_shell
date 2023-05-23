@@ -26,14 +26,6 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			fflush(stdout);
 		}
 		read = _getline(&cmd, &n, stdin);
-		cmdresult = handle_cmd(cmd);
-		if (cmdresult == 0)
-		{
-			for (i = 0; environ[i]; i++)
- 	                     free(environ[i]);
-			continue;
-
-		}
 		if (read == -1)
 			break;
 		args[i] = strtok(cmd, delim);
@@ -46,6 +38,9 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 		}
 		args[i] = NULL;
 		i = 0;
+		cmdresult = handle_cmd(args, argv[0], cmd);
+		if (cmdresult == 1)
+			continue;
 		fullpath = find_file_in_path(args[0], filepath);
 		if (fullpath == NULL)
 		{
