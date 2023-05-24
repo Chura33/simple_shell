@@ -1,4 +1,12 @@
 #include "phics.h"
+/**
+  * _setenv - set environmental variable
+  * @name: name
+  * @value: overwrite value
+  * @overwite: int to overwrite
+  *
+  *Return: int
+  */
 int _setenv(const char *name, const char *value, int overwrite)
 {
 	char **newenv = environ, newvar[1024];

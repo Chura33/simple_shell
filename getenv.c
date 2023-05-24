@@ -1,4 +1,10 @@
 #include "phics.h"
+/**
+  *_getenv - get environmental variable
+  *@name: name of variable
+  *
+  *Return: NULL or char *
+  */
 char *_getenv(const char *name)
 {
 	size_t length = _strlen(name);
