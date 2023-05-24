@@ -39,6 +39,12 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			args[i] = strtok(NULL, delim);
 		}
 		args[i] = NULL;
+		if (i > 1)
+		{
+			perror(argv[0]);
+			i = 0;
+			continue;
+		}	
 		i = 0;
 		cmdresult = handle_cmd(args, argv[0], cmd);
 		if (cmdresult == 1)
