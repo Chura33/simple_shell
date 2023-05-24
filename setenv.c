@@ -30,7 +30,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 	{
 		for ( ; strncmp(*(newenv), name, strlen(name)) != 0; newenv++)
 			count++;
-		if(*(*(newenv) + strlen(name)) == '=') 
+		if (*(*(newenv) + strlen(name)) == '=')
 		{
 			strcpy((*(newenv) + strlen(name) + 1), valuecpy);
 		}
@@ -40,15 +40,3 @@ int _setenv(const char *name, const char *value, int overwrite)
 	}
 	return (-1);
 }
-
-/**int main(int argc, char **argv)
-{
-	int i = 0;
-
-	_setenv("DDCHURA", "/ls", 0);
-	_setenv("PATH", "/hls", 1);
-	for (i = 0; *(environ + i) != NULL; i++)
-	{
-		printf("%s\n", *(environ + i));
-	}
-}*/

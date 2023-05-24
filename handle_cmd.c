@@ -2,6 +2,10 @@
 /**
 * handle_cmd - this checks for special commands
 * @cmd: the command
+* @args: array pointer
+* @argv: caller
+* @cmd: command
+*
 * Return: returns void
 */
 int handle_cmd(char **args, char *argv, char *cmd)
