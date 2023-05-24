@@ -34,7 +34,7 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			i++;
 			args[i] = strtok(NULL, " \n");
 		}
-		args[i] = NULL;	
+		args[i] = NULL;
 		i = 0;
 		if (handle_cmd(args, argv[0], cmd) == 1)
 			continue;

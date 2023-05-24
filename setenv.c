@@ -3,7 +3,7 @@
   * _setenv - set environmental variable
   * @name: name
   * @value: overwrite value
-  * @overwite: int to overwrite
+  * @overwrite: int to overwrite
   *
   *Return: int
   */
