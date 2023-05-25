@@ -1,6 +1,9 @@
 #include "phics.h"
 /**
   *err_message - create a char * with err message
+  *@av: caller
+  *@args: argument 0
+  *@err_mg: error message
   *
   *Return: the error char *
   */
