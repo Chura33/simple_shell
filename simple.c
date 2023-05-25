@@ -11,7 +11,7 @@
 int main(__attribute__((unused)) int argc, char **argv, char **envp)
 {
 	char *cmd = NULL, filepath[MAXCHAR], *args[200], *fullpath, **env = envp;
-	char err[1024] = "wow";
+	char err[1024];
 	int i = 0, interactive = isatty(fileno(stdin));
 	size_t n = 0;
 	pid_t pid;
@@ -37,7 +37,7 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			args[i] = strtok(NULL, " \n\t");
 		}
 		args[i] = NULL;
-		/*err_msg(av[0], args[0], err);*/
+		err_msg(argv[0], args[0], err);
 		if (handle_cmd(args, argv[0], cmd) == 1)
 			continue;
 		fullpath = find_file_in_path(args[0], filepath);
