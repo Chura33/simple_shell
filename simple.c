@@ -26,6 +26,7 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			free(cmd);
 		if (_getline(&cmd, &n, stdin) == -1)
 			break;
+		i = 0;
 		args[i] = strtok(cmd, " \n\t");
 		if (args[i] == NULL)
 			continue;
@@ -35,11 +36,10 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			args[i] = strtok(NULL, " \n\t");
 		}
 		args[i] = NULL;
-		i = 0;
 		if (handle_cmd(args, argv[0], cmd) == 1)
 			continue;
 		fullpath = find_file_in_path(args[0], filepath);
-		if (fullpath == NULL)
+		if (fullpath == NULL || i > 1)
 		{
 			perror(argv[0]);
 			continue;
