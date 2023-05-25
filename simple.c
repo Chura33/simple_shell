@@ -39,7 +39,7 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 		if (handle_cmd(args, argv[0], cmd) == 1)
 			continue;
 		fullpath = find_file_in_path(args[0], filepath);
-		if (fullpath == NULL || i > 1)
+		if (fullpath == NULL)
 		{
 			perror(argv[0]);
 			continue;
