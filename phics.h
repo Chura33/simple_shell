@@ -22,4 +22,5 @@ char *_getenv(const char *name);
 int _setenv(const char *name, const char *value, int overwrite);
 char *_strdup(char *str);
 int cd_dir(char *name, char *argv);
+void err_msg(char *av, char *args, char *err_mg);
 #endif
