@@ -26,13 +26,13 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			free(cmd);
 		if (_getline(&cmd, &n, stdin) == -1)
 			break;
-		args[i] = strtok(cmd, " \n");
+		args[i] = strtok(cmd, " \n\t");
 		if (args[i] == NULL)
 			continue;
 		while (args[i] != NULL)
 		{
 			i++;
-			args[i] = strtok(NULL, " \n");
+			args[i] = strtok(NULL, " \n\t");
 		}
 		args[i] = NULL;
 		i = 0;
