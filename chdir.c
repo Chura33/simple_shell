@@ -10,6 +10,7 @@ int cd_dir(char *name, char *argv)
 {
 	int cd_checker;
 	char buff[1024];
+
 	if (name == NULL)
 	{
 		chdir(_getenv("HOME"));

@@ -1,10 +1,12 @@
 #include "phics.h"
 /**
-* handle_pid - function that handles the execution of the full path
+* do_pid - function that handles the execution of the full path
 * @pid: the pid of the forked process
 * @cmd: the first token entered in the command line
 * @fullpath: the full path of the command
 * @args: the array of the command and the arguments
+* @env: environmental variable
+*
 * Return: returns void
 */
 void do_pid(pid_t pid, char *cmd, char *fullpath, char *args[], char **env)

@@ -12,7 +12,7 @@ ssize_t _getline(char **ptr, __attribute__((unused)) size_t *n, FILE *stm)
 {
 	char buff[MAX_PATH] = "";
 	ssize_t read_count = 0;
-	
+
 	read_count = read(fileno(stm), buff, MAX_PATH);
 	if (read_count == 0 || read_count == -1)
 	{
