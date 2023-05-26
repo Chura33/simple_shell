@@ -10,8 +10,7 @@
 
 int main(__attribute__((unused)) int argc, char **argv, char **envp)
 {
-	char *cmd = NULL, filepath[MAXCHAR], *args[200], *fullpath, **env = envp;
-	char err[1024];
+	char *cmd = NULL, filepath[MAXCHAR], *args[200], *fullpath, **env = envp, err[1024];
 	int i = 0, interactive = isatty(fileno(stdin));
 	size_t n = 0;
 	pid_t pid;
@@ -23,9 +22,7 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 			write(1, "$ ", 2);
 			fflush(stdout);
 		}
-		if (cmd != NULL)
-			free(cmd);
-		if (_getline(&cmd, &n, stdin) == -1)
+		if (getline(&cmd, &n, stdin) == -1)
 			break;
 		i = 0;
 		args[i] = strtok(cmd, " \t\n");
@@ -49,5 +46,6 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 		pid = fork();
 		do_pid(pid, cmd, fullpath, args, env);
 	}
+		free(cmd);
 		return (0);
 }

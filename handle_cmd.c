@@ -10,7 +10,7 @@
 */
 int handle_cmd(char **args, char *argv, char *cmd)
 {
-	int result = 0, exit_status = 0;
+	int exit_status = 0;
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
@@ -28,19 +28,19 @@ int handle_cmd(char **args, char *argv, char *cmd)
 	{
 		if (args[3] == NULL)
 		{
-			result = _setenv(args[1], args[2], 0);
+			_setenv(args[1], args[2], 0);
 		}
 		else
 		{
-			result = _setenv(args[1], args[2], atoi(args[3]));
+			 _setenv(args[1], args[2], atoi(args[3]));
 		}
-		if (result == 0)
-		printf("success\n");
+		free(cmd);	
 		return (1);
 	}
 	else if (_strcmp(args[0], "cd") == 0)
 	{
 		cd_dir(args[1], argv);
+		free(cmd);
 		return (1);
 	}
 	return (0);
