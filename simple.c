@@ -28,16 +28,16 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 		if (_getline(&cmd, &n, stdin) == -1)
 			break;
 		i = 0;
-		args[i] = strtok(cmd, " \n\t");
+		args[i] = strtok(cmd, " \t\n");
 		if (args[i] == NULL)
 			continue;
 		while (args[i] != NULL)
 		{
 			i++;
-			args[i] = strtok(NULL, " \n\t");
+			args[i] = strtok(NULL, " \t\n");
 		}
 		args[i] = NULL;
-		err_msg(av[0], args[0], err);
+		err_msg(argv[0], args[0], err);
 		if (handle_cmd(args, argv[0], cmd) == 1)
 			continue;
 		fullpath = find_file_in_path(args[0], filepath);
