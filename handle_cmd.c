@@ -34,7 +34,7 @@ int handle_cmd(char **args, char *argv, char *cmd)
 		{
 			 _setenv(args[1], args[2], atoi(args[3]));
 		}
-		free(cmd);	
+		free(cmd);
 		return (1);
 	}
 	else if (_strcmp(args[0], "cd") == 0)
