@@ -21,8 +21,8 @@ int cd_dir(char *name, char *argv)
 	else if (_strcmp("-", name) == 0)
 	{
 		chdir(_getenv("OLDPWD"));
-		_setenv("OLDPWD", _getenv("PWD"), 1);
-		_setenv("PWD", getcwd(buff, 1024), 1);
+		setenv("OLDPWD", _getenv("PWD"), 1);
+		setenv("PWD", getcwd(buff, 1024), 1);
 		return (0);
 	}
 	else
@@ -33,8 +33,8 @@ int cd_dir(char *name, char *argv)
 			perror(argv);
 			return (0);
 		}
-		_setenv("OLDPWD", _getenv("PWD"), 1);
-		_setenv("PWD", getcwd(buff, 1024), 1);
+		setenv("OLDPWD", getenv("PWD"), 1);
+		setenv("PWD", getcwd(buff, 1024), 1);
 		return (0);
 	}
 	return (0);

@@ -28,11 +28,11 @@ int handle_cmd(char **args, char *argv, char *cmd)
 	{
 		if (args[3] == NULL)
 		{
-			_setenv(args[1], args[2], 0);
+			setenv(args[1], args[2], 0);
 		}
 		else
 		{
-			 _setenv(args[1], args[2], atoi(args[3]));
+			 setenv(args[1], args[2], atoi(args[3]));
 		}
 		free(cmd);
 		return (1);
