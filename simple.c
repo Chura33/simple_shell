@@ -12,7 +12,8 @@ int main(__attribute__((unused)) int argc, char **argv, char **envp)
 {
 	char *cmd = NULL, filepath[MAXCHAR], *args[200], *fullpath, **env = envp;
 	int i = 0, interactive = isatty(fileno(stdin));
-	size_t n = 0; char err[1024];
+	size_t n = 0;
+	char err[1024];
 	pid_t pid;
 
 	while (1)
