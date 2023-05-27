@@ -30,6 +30,10 @@ int handle_cmd(char **args, char *argv, char *cmd)
 		{
 			setenv(args[1], args[2], 0);
 		}
+		else if(args[2] == NULL)
+		{
+			setenv(args[1],"",1);
+		}
 		else
 		{
 			 setenv(args[1], args[2], atoi(args[3]));
