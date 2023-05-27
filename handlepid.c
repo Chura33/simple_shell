@@ -21,7 +21,7 @@ void do_pid(pid_t pid, char *cmd, char *fullpath, char *args[], char **env)
 		execve(fullpath, args, env);
 		perror("execve");
 		free(cmd);
-		exit(0);
+		exit(2);
 	}
 	else
 	{
